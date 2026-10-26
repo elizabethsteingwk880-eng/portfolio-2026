@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>作品集 · 2026</title>
+<style>
+  :root{
+    --bg:#0b0b0d; --bg2:#111114; --line:#24242a; --ink:#e9e6e1; --dim:#8e8a84;
+    --accent:#d9a05b; --accent2:#7fa8bd;
+    --serif:"Songti SC","Noto Serif SC","Source Han Serif SC",SimSun,serif;
+    --sans:"PingFang SC","Microsoft YaHei","Noto Sans SC",-apple-system,system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.75;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  img{display:block;max-width:100%}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;min-height:78vh;display:flex;flex-direction:column;justify-content:center;
+    padding:12vh 8vw 8vh;border-bottom:1px solid var(--line);overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:0;z-index:0;
+    background:
+      radial-gradient(1100px 520px at 78% 18%, rgba(217,160,91,.20), transparent 62%),
+      radial-gradient(900px 460px at 12% 82%, rgba(127,168,189,.13), transparent 60%);}
+  .hero > *{position:relative;z-index:1}
+  .kicker{letter-spacing:.18em;font-size:12px;color:var(--accent);margin:0 0 26px}
+  h1{font-family:var(--serif);font-weight:400;font-size:clamp(52px,10vw,132px);line-height:.95;
+     margin:0;letter-spacing:.06em}
+  h1 small{display:block;font-size:clamp(13px,1.6vw,17px);letter-spacing:.5em;color:var(--dim);
+     margin-top:22px;font-family:var(--sans)}
+  .hero p.sub{color:var(--dim);max-width:46ch;margin:30px 0 0;font-size:15px}
+  .stats{display:flex;gap:44px;flex-wrap:wrap;margin-top:44px;padding-top:24px;border-top:1px solid var(--line)}
+  .stats b{display:block;font-family:var(--serif);font-size:30px;font-weight:400;color:var(--ink)}
+  .stats span{font-size:12px;letter-spacing:.22em;color:var(--dim)}
+
+  /* ---------- nav ---------- */
+  nav.toc{position:sticky;top:0;z-index:40;background:rgba(11,11,13,.86);backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line)}
+  nav.toc ul{display:flex;gap:6px;list-style:none;margin:0;padding:0 8vw;overflow-x:auto}
+  nav.toc a{display:block;padding:15px 16px;font-size:13px;letter-spacing:.1em;color:var(--dim);
+    text-decoration:none;border-bottom:2px solid transparent;white-space:nowrap}
+  nav.toc a:hover{color:var(--ink);border-color:var(--accent)}
+
+  /* ---------- section ---------- */
+  main{padding:0 8vw 10vh}
+  section{padding:9vh 0 2vh;border-bottom:1px solid var(--line)}
+  section:last-of-type{border-bottom:0}
+  .sec-head{display:flex;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:10px}
+  .sec-head .num{font-family:var(--serif);font-size:15px;color:var(--accent);letter-spacing:.2em}
+  h2{font-family:var(--serif);font-weight:400;font-size:clamp(26px,3.4vw,42px);margin:0;letter-spacing:.04em}
+  .lead{color:var(--dim);max-width:70ch;margin:6px 0 40px;font-size:15px}
+
+  /* ---------- work ---------- */
+  .work{margin:0 0 84px}
+  .work:last-child{margin-bottom:0}
+  .work-head{display:flex;justify-content:space-between;gap:24px;align-items:baseline;flex-wrap:wrap;
+    padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:26px}
+  .work-head h3{font-family:var(--serif);font-weight:400;font-size:clamp(20px,2.4vw,27px);margin:0;letter-spacing:.03em}
+  .work-head h3 em{font-style:normal;color:var(--dim);font-size:.62em;margin-left:14px;letter-spacing:.16em}
+  .work-head .meta{font-size:12px;color:var(--dim);letter-spacing:.14em;text-align:right}
+  .work-body{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:34px;align-items:start}
+  @media(max-width:900px){.work-body{grid-template-columns:1fr}}
+
+  .screen{border:1px solid var(--line);background:#000;position:relative}
+  .screen video{width:100%;display:block;aspect-ratio:16/9;background:#000}
+  .screen .ph{padding:10px 14px;font-size:11px;letter-spacing:.16em;color:var(--dim);border-top:1px solid var(--line)}
+
+  .desc{font-size:14.5px;color:#c9c5bf}
+  .desc p{margin:0 0 18px}
+  dl.specs{margin:0;font-size:12.5px;display:grid;grid-template-columns:auto 1fr;gap:7px 16px;
+    padding:18px 0 0;border-top:1px solid var(--line)}
+  dl.specs dt{color:var(--dim);letter-spacing:.1em;white-space:nowrap}
+  dl.specs dd{margin:0;color:#cfcbc5;font-variant-numeric:tabular-nums}
+  .files{margin-top:20px;display:flex;flex-wrap:wrap;gap:8px}
+  .files a{font-size:12px;letter-spacing:.08em;text-decoration:none;color:var(--accent);
+    border:1px solid rgba(217,160,91,.4);padding:6px 12px;transition:.2s}
+  .files a:hover{background:rgba(217,160,91,.12)}
+
+  /* ---------- grids ---------- */
+  .grid{display:grid;gap:14px;margin-top:30px}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  @media(max-width:1000px){.g3,.g4{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.g3,.g4{grid-template-columns:1fr}}
+  figure{margin:0;position:relative;overflow:hidden;background:#141417;border:1px solid var(--line);cursor:zoom-in}
+  figure img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1),filter .5s;
+    filter:saturate(.94) brightness(.94)}
+  figure:hover img{transform:scale(1.045);filter:saturate(1.02) brightness(1)}
+  figure figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px 14px 11px;font-size:11.5px;
+    letter-spacing:.1em;color:#efece7;background:linear-gradient(transparent,rgba(0,0,0,.82));
+    opacity:0;transform:translateY(6px);transition:.35s}
+  figure:hover figcaption{opacity:1;transform:none}
+  .portrait figure img{aspect-ratio:1344/896;object-fit:cover}
+  .poster figure img{aspect-ratio:3/4;object-fit:cover}
+  .epic figure img{aspect-ratio:16/9;object-fit:cover}
+
+  /* ---------- archive ---------- */
+  .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);
+    border:1px solid var(--line);margin:26px 0 10px}
+  .steps div{background:var(--bg2);padding:20px 16px}
+  .steps b{display:block;font-family:var(--serif);font-size:15px;color:var(--accent);margin-bottom:8px}
+  .steps p{margin:0;font-size:12px;color:var(--dim);line-height:1.65}
+  @media(max-width:900px){.steps{grid-template-columns:repeat(2,1fr)}}
+  .note{font-size:12.5px;color:var(--dim);border-left:2px solid var(--accent);padding:2px 0 2px 16px;margin:26px 0 0}
+  .tree{font-family:ui-monospace,Consolas,monospace;font-size:12.5px;color:#a8a49e;background:var(--bg2);
+    border:1px solid var(--line);padding:22px 24px;overflow-x:auto;line-height:1.85;white-space:pre}
+
+  footer{padding:7vh 8vw 9vh;border-top:1px solid var(--line);color:var(--dim);font-size:12px;
+    display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;letter-spacing:.08em}
+
+  /* ---------- script / 雨声 ---------- */
+  .rain-hero{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:38px;align-items:start}
+  @media(max-width:900px){.rain-hero{grid-template-columns:1fr}}
+  blockquote{margin:0;font-family:var(--serif);font-size:clamp(17px,1.9vw,22px);line-height:1.95;
+    color:#ded9d2;border-left:2px solid var(--accent);padding:2px 0 2px 24px}
+  .rain-specs{border-top:0;padding-top:0}
+  h3.sub{font-family:var(--serif);font-weight:400;font-size:clamp(19px,2.2vw,24px);
+    margin:68px 0 20px;letter-spacing:.03em}
+  h3.sub::before{content:"";display:inline-block;width:26px;height:1px;background:var(--accent);
+    vertical-align:middle;margin-right:14px}
+
+  table.cmp{width:100%;border-collapse:collapse;font-size:13.5px;margin:0}
+  table.cmp th,table.cmp td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);
+    vertical-align:top;line-height:1.72}
+  table.cmp thead th{font-size:11px;letter-spacing:.18em;color:var(--dim);font-weight:400;
+    border-bottom:1px solid #3a3a42;padding-bottom:10px}
+  table.cmp td:first-child{color:var(--dim);font-size:12.5px;letter-spacing:.1em;white-space:nowrap;width:92px}
+  table.cmp td.v1{color:#8b8781}
+  table.cmp td.v5{color:#e6e2dc}
+  table.cmp td.v5 b{color:var(--accent);font-weight:400}
+  table.cmp3{width:100%;border-collapse:collapse;font-size:12.5px;table-layout:fixed}
+  table.cmp3 th,table.cmp3 td{text-align:left;padding:13px 14px;border-bottom:1px solid var(--line);
+    vertical-align:top;line-height:1.75}
+  table.cmp3 thead th{font-size:11px;letter-spacing:.16em;color:var(--dim);font-weight:400;
+    border-bottom:1px solid #3a3a42}
+  table.cmp3 td:first-child{width:64px;color:var(--dim);font-size:12px;letter-spacing:.1em}
+  table.cmp3 .v1{color:#8b8781}
+  table.cmp3 .v5{color:#e6e2dc}
+  table.cmp3 .why{color:#b6b2ac;font-size:12px}
+  @media(max-width:820px){
+    table.cmp td,table.cmp th{padding:10px 8px;font-size:12.5px}
+    table.cmp td:first-child{width:66px;font-size:11.5px}
+    table.cmp3,table.cmp3 tbody,table.cmp3 tr,table.cmp3 td{display:block;width:auto}
+    table.cmp3 thead{display:none}
+    table.cmp3 td{border-bottom:0;padding:6px 0}
+    table.cmp3 tr{border-bottom:1px solid var(--line);padding:12px 0}
+  }
+
+  .flow{margin:4px 0 0;display:grid;gap:14px}
+  .flow-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .flow-tag{font-size:11px;letter-spacing:.16em;color:var(--dim);min-width:76px}
+  .chip{border:1px solid var(--line);background:var(--bg2);padding:6px 11px;font-size:12px;color:#c5c1bb}
+  .chip.loop{border-color:rgba(217,160,91,.55);color:var(--accent);background:rgba(217,160,91,.07)}
+  .arw{color:#4a4a52;font-size:12px}
+
+  ol.points{list-style:none;margin:0;padding:0}
+  ol.points > li{border-top:1px solid var(--line);padding:28px 0 4px}
+  ol.points h4{font-family:var(--serif);font-weight:400;font-size:17.5px;margin:0 0 12px;letter-spacing:.02em}
+  ol.points h4 .pn{color:var(--accent);font-size:12px;letter-spacing:.2em;margin-right:14px;font-family:var(--sans)}
+  ol.points p{margin:0 0 15px;color:#c2beb8;font-size:14px;max-width:78ch}
+  .ba{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+  .ba > div{background:var(--bg2);padding:16px 20px;font-size:13px;line-height:1.85}
+  .ba em{display:block;font-style:normal;font-size:10.5px;letter-spacing:.2em;color:var(--dim);margin-bottom:9px}
+  .ba .before{color:#8b8781}
+  .ba .after{color:#e3ded7}
+  @media(max-width:760px){.ba{grid-template-columns:1fr}}
+
+  .cost{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+  .cost > div{background:var(--bg2);padding:22px 24px}
+  .cost h4{margin:0 0 12px;font-size:11px;letter-spacing:.2em;color:var(--accent);font-weight:400}
+  .cost ul{margin:0;padding-left:18px;font-size:13px;color:#b6b2ac;line-height:1.9}
+  .cost li{margin-bottom:6px}
+  @media(max-width:760px){.cost{grid-template-columns:1fr}}
+
+  /* ---------- lightbox ---------- */
+  #lb{position:fixed;inset:0;z-index:100;background:rgba(6,6,8,.96);display:none;
+    align-items:center;justify-content:center;padding:4vh 5vw;cursor:zoom-out}
+  #lb.on{display:flex}
+  #lb img{max-width:100%;max-height:88vh;object-fit:contain;box-shadow:0 30px 90px rgba(0,0,0,.7)}
+  #lb .cap{position:absolute;bottom:3vh;left:0;right:0;text-align:center;font-size:12px;
+    letter-spacing:.14em;color:#b8b4ae}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <p class="kicker">A I   影像 · 平面 · 关键帧</p>
+  <h1>作品集<small>SELECTED WORKS　2026</small></h1>
+  <p class="sub">三支影像、十四件平面作品，一部短片剧本从初稿到定稿的五轮修改，以及一部作品的完整技术档案。<br>从分镜提示词到调色交付，全部在这台机器上完成。</p>
+  <div class="stats">
+    <div><b>3</b><span>影像作品</span></div>
+    <div><b>14</b><span>平面作品</span></div>
+    <div><b>1</b><span>部剧本 · V1→V5</span></div>
+    <div><b>6</b><span>分类</span></div>
+    <div><b>142″</b><span>成片时长</span></div>
+  </div>
+</header>
+
+<nav class="toc"><ul>
+  <li><a href="#film">01 动态影像</a></li>
+  <li><a href="#portrait">02 电影感人像</a></li>
+  <li><a href="#poster">03 海报设计</a></li>
+  <li><a href="#epic">04 史诗关键帧</a></li>
+  <li><a href="#script">05 剧本文本</a></li>
+  <li><a href="#archive">06 技术档案与目录</a></li>
+  <li><a href="作品集_2026.pdf" target="_blank" rel="noopener" style="color:var(--accent)">打印版 PDF ↗</a></li>
+</ul></nav>
+
+<main>
+
+<!-- ============ 01 动态影像 ============ -->
+<section id="film">
+  <div class="sec-head"><span class="num">01</span><h2>动态影像</h2></div>
+  <p class="lead">三支成片，三种做法：一支 84 秒的剧情短片靠提示词工程与定格接力把人物锁住；一支海洋影像用长镜头与冷调做呼吸；一支雪夜片段保留了生成影像的粗颗粒。</p>
+
+  <!-- 第三棵梧桐 -->
+  <article class="work">
+    <div class="work-head">
+      <h3>第三棵梧桐 <em>THE THIRD PLANE TREE</em></h3>
+      <div class="meta">AI 剧情短片 ／ 84 秒 ／ 1920×1080 ／ 24 fps</div>
+    </div>
+    <div class="work-body">
+      <div class="screen">
+        <video controls preload="metadata" playsinline poster="01_动态影像/01_第三棵梧桐_84秒/剧照/01_球场初见.jpg">
+          <source src="01_动态影像/01_第三棵梧桐_84秒/第三棵梧桐_84秒_成片.mp4" type="video/mp4">
+        </video>
+        <div class="ph">84.000 s ／ 2016 帧 ／ H.264 CRF16 ／ AAC 256k 48 kHz ／ −12.9 LUFS</div>
+      </div>
+      <div>
+        <div class="desc">
+          <p>三棵梧桐下的球场，一本褪蓝色的旧课本，一朵压干的雏菊，和一段始终没有说出口的告别。同一处球场的阳面与黄昏只换光不换机位，两个人从一个球场的两端走到同一条长椅上。</p>
+          <p>全片由 MiniMax H3 逐镜生成：先出人物三视图与空景板，再「往空景里放人」；上一镜的尾帧当下一镜的首帧，做跨镜接力。成片按 100 BPM 网格重剪到 53 刀，最后用 DaVinci Resolve 的 FileLUT 统一到岩井俊二／春光乍泄两条暖调分支。</p>
+        </div>
+        <dl class="specs">
+          <dt>生成</dt><dd>MiniMax H3 (ref2va) · ComfyUI · 8 步 turbo LoRA</dd>
+          <dt>源分辨率</dt><dd>1024×576 → Real-ESRGAN 2× → 1920×1080</dd>
+          <dt>镜头</dt><dd>24 镜（含 3 镜补拍）／ 53 刀重剪，平均 1.58 s/刀</dd>
+          <dt>重渲</dt><dd>40+ 次单镜重渲，最长镜 267 帧</dd>
+          <dt>调色</dt><dd>Resolve Fusion FileLUT · gain .82 / gamma 1.20 / amber .20</dd>
+          <dt>交付</dt><dd>1920×1080 · 24 fps · 84.000 s · −12.9 LUFS / −1.5 dBTP</dd>
+        </dl>
+        <div class="files">
+          <a href="01_动态影像/01_第三棵梧桐_84秒/文档/第三棵梧桐_最终版提示词_V9.docx">最终版提示词 V9</a>
+          <a href="01_动态影像/01_第三棵梧桐_84秒/文档/第三棵梧桐_修改问题归纳.docx">修改问题归纳</a>
+        </div>
+      </div>
+    </div>
+    <div class="grid g4">
+      <figure><img src="01_动态影像/01_第三棵梧桐_84秒/剧照/01_球场初见.jpg" alt="球场初见"><figcaption>镜01 ／ 00:03 球场初见</figcaption></figure>
+      <figure><img src="01_动态影像/01_第三棵梧桐_84秒/剧照/02_课本里的干花.jpg" alt="课本里的干花"><figcaption>镜05 ／ 00:21 课本里的干花</figcaption></figure>
+      <figure><img src="01_动态影像/01_第三棵梧桐_84秒/剧照/03_指尖与线稿.jpg" alt="指尖与线稿"><figcaption>镜10 ／ 00:41 一次拉焦</figcaption></figure>
+      <figure><img src="01_动态影像/01_第三棵梧桐_84秒/剧照/04_回到黄昏.jpg" alt="回到黄昏"><figcaption>镜12 ／ 00:48 回到黄昏</figcaption></figure>
+      <figure><img src="01_动态影像/01_第三棵梧桐_84秒/剧照/05_并肩走.jpg" alt="并肩走"><figcaption>镜15 ／ 00:56 并肩走</figcaption></figure>
+      <figure><img src="01_动态影像/01_第三棵梧桐_84秒/剧照/06_递书.jpg" alt="递书"><figcaption>镜17 ／ 01:03 递书</figcaption></figure>
+      <figure><img src="01_动态影像/01_第三棵梧桐_84秒/剧照/07_她的眼睛.jpg" alt="她的眼睛"><figcaption>镜21 ／ 01:16 她的眼睛（副歌峰值）</figcaption></figure>
+      <figure><img src="01_动态影像/01_第三棵梧桐_84秒/剧照/08_推近书封.jpg" alt="推近书封"><figcaption>镜22 ／ 01:20 推近书封</figcaption></figure>
+    </div>
+  </article>
+
+  <!-- 海洋与鲸豚 -->
+  <article class="work">
+    <div class="work-head">
+      <h3>海洋与鲸豚 <em>OCEAN</em></h3>
+      <div class="meta">海洋生物影像 ／ 41 秒 ／ 1920×1080 ／ 2.39:1 遮幅</div>
+    </div>
+    <div class="work-body">
+      <div class="screen">
+        <video controls preload="metadata" playsinline poster="01_动态影像/02_海洋与鲸豚_41秒/剧照/01_水面换气.jpg">
+          <source src="01_动态影像/02_海洋与鲸豚_41秒/海洋与鲸豚_41秒_成片.mp4" type="video/mp4">
+        </video>
+        <div class="ph">41.000 s ／ H.264 15.9 Mbps ／ PCM 24 bit 48 kHz ／ 2.39:1</div>
+      </div>
+      <div>
+        <div class="desc">
+          <p>航拍垂直俯视与水下侧向两个视角交替：鲸豚在深蓝里浮出水面换气、又潜回光柱里。全片几乎只靠水的运动与前后的明暗层次推进，没有人物、没有剪辑花招。</p>
+          <p>遮幅压在 2.39:1，冷蓝主调里只留一层薄薄的高光，用来做「安静」这件事本身。</p>
+        </div>
+        <dl class="specs">
+          <dt>画幅</dt><dd>1920×1080 · 遮幅 2.39:1</dd>
+          <dt>时长</dt><dd>41.000 s · 24 fps</dd>
+          <dt>编码</dt><dd>H.264 High · 15.9 Mbps · PCM 24 bit / 48 kHz</dd>
+          <dt>视角</dt><dd>垂直俯拍（水面）／水下侧向跟拍</dd>
+        </dl>
+      </div>
+    </div>
+    <div class="grid g4">
+      <figure><img src="01_动态影像/02_海洋与鲸豚_41秒/剧照/01_水面换气.jpg" alt="水面换气"><figcaption>00:02 水面换气</figcaption></figure>
+      <figure><img src="01_动态影像/02_海洋与鲸豚_41秒/剧照/02_浮出水面.jpg" alt="浮出水面"><figcaption>00:10 浮出水面</figcaption></figure>
+      <figure><img src="01_动态影像/02_海洋与鲸豚_41秒/剧照/03_下潜.jpg" alt="下潜"><figcaption>00:20 下潜</figcaption></figure>
+      <figure><img src="01_动态影像/02_海洋与鲸豚_41秒/剧照/04_深水.jpg" alt="深水"><figcaption>00:36 深水</figcaption></figure>
+    </div>
+  </article>
+
+  <!-- 雪夜街头 -->
+  <article class="work">
+    <div class="work-head">
+      <h3>雪夜街头 <em>SNOW NIGHT</em></h3>
+      <div class="meta">场景片段 ／ 17.5 秒 ／ 960×656 ／ 30 fps</div>
+    </div>
+    <div class="work-body">
+      <div class="screen">
+        <video controls preload="metadata" playsinline poster="01_动态影像/03_雪夜街头_17秒/剧照/01_街口.jpg">
+          <source src="01_动态影像/03_雪夜街头_17秒/雪夜街头_17秒_片段.mp4" type="video/mp4">
+        </video>
+        <div class="ph">17.531 s ／ 960×656 ／ HEVC ／ 单声道 44.1 kHz</div>
+      </div>
+      <div>
+        <div class="desc">
+          <p>雪夜的街口、亮着的便利招牌、一个背影走进灯光里。低机位与手持感，颗粒和噪点都留着没有清理——它更像一段气氛测试，而不是成片。</p>
+          <p>原始文件只有 960×656，这一支在这里以「过程片段」的身份陈列。</p>
+        </div>
+        <dl class="specs">
+          <dt>画幅</dt><dd>960×656（约 1.46:1）</dd>
+          <dt>时长</dt><dd>17.531 s · 30 fps</dd>
+          <dt>编码</dt><dd>HEVC Main · 412 kbps · AAC 单声道</dd>
+        </dl>
+      </div>
+    </div>
+    <div class="grid g4">
+      <figure><img src="01_动态影像/03_雪夜街头_17秒/剧照/01_街口.jpg" alt="街口"><figcaption>00:01 街口</figcaption></figure>
+      <figure><img src="01_动态影像/03_雪夜街头_17秒/剧照/02_招牌与背影.jpg" alt="招牌与背影"><figcaption>00:05 招牌与背影</figcaption></figure>
+      <figure><img src="01_动态影像/03_雪夜街头_17秒/剧照/03_雪中特写.jpg" alt="雪中特写"><figcaption>00:09 雪中特写</figcaption></figure>
+      <figure><img src="01_动态影像/03_雪夜街头_17秒/剧照/04_灯火.jpg" alt="灯火"><figcaption>00:14 灯火</figcaption></figure>
+    </div>
+  </article>
+</section>
+
+<!-- ============ 02 电影感人像 ============ -->
+<section id="portrait">
+  <div class="sec-head"><span class="num">02</span><h2>电影感人像</h2></div>
+  <p class="lead">同一个人物的两组横向静帧，做的是「剧照感」练习：同一套学院制服、同一阵风，换两个完全不同的空间——海岸道口的暮色，和乡野公路上的巨云。</p>
+
+  <article class="work">
+    <div class="work-head">
+      <h3>海边铁路 <em>SEASIDE CROSSING</em></h3>
+      <div class="meta">静帧 3 张 ／ 1344×896</div>
+    </div>
+    <div class="grid g3 portrait">
+      <figure><img src="02_电影感人像/01_海边铁路/海边铁路_01.jpg" alt="海边铁路 1"><figcaption>落日沉进海平线，道口红灯亮起</figcaption></figure>
+      <figure><img src="02_电影感人像/01_海边铁路/海边铁路_02.jpg" alt="海边铁路 2"><figcaption>列车从她身后掠过，风吹开碎发</figcaption></figure>
+      <figure><img src="02_电影感人像/01_海边铁路/海边铁路_03.jpg" alt="海边铁路 3"><figcaption>同一机位的稍早一瞬，光还贴在铁轨上</figcaption></figure>
+    </div>
+  </article>
+
+  <article class="work">
+    <div class="work-head">
+      <h3>乡野巨云 <em>CUMULUS ROAD</em></h3>
+      <div class="meta">静帧 3 张 ／ 1344×896</div>
+    </div>
+    <div class="grid g3 portrait">
+      <figure><img src="02_电影感人像/02_乡野巨云/乡野巨云_01.jpg" alt="乡野巨云 1"><figcaption>落日把积雨云烧成橘子色</figcaption></figure>
+      <figure><img src="02_电影感人像/02_乡野巨云/乡野巨云_02.jpg" alt="乡野巨云 2"><figcaption>风从公路尽头来</figcaption></figure>
+      <figure><img src="02_电影感人像/02_乡野巨云/乡野巨云_03.jpg" alt="乡野巨云 3"><figcaption>侧身回望，云压得很低</figcaption></figure>
+    </div>
+  </article>
+</section>
+
+<!-- ============ 03 海报设计 ============ -->
+<section id="poster">
+  <div class="sec-head"><span class="num">03</span><h2>海报设计</h2></div>
+  <p class="lead">「Amor Fati」——爱你的命运。标题字用天空填充，手绘线条的少女与写实日落同框，让一句拉丁文格言变成可以直接贴墙的宣言。同一个版式的四种落地。</p>
+
+  <article class="work">
+    <div class="work-head">
+      <h3>Amor Fati <em>POSTER SERIES</em></h3>
+      <div class="meta">海报 4 版 ／ 1086×1448 · 941×1672</div>
+    </div>
+    <div class="grid g4 poster">
+      <figure><img src="03_海报设计_AmorFati/AmorFati_01_云与飞鸟.jpg" alt="Amor Fati 云与飞鸟"><figcaption>云与飞鸟 ／ 941×1672</figcaption></figure>
+      <figure><img src="03_海报设计_AmorFati/AmorFati_02_云与飞鸟_3x4.jpg" alt="Amor Fati 云与飞鸟 3:4"><figcaption>云与飞鸟 ／ 1086×1448</figcaption></figure>
+      <figure><img src="03_海报设计_AmorFati/AmorFati_03_城市日落.jpg" alt="Amor Fati 城市日落"><figcaption>城市日落 ／ 1086×1448</figcaption></figure>
+      <figure><img src="03_海报设计_AmorFati/AmorFati_04_城市日落_浅调.jpg" alt="Amor Fati 城市日落 浅调"><figcaption>城市日落（浅调）／ 1086×1448</figcaption></figure>
+    </div>
+    <p class="note">「And we should consider every day lost on which we have not danced at least once.」——尼采。四版共用同一套版式：左上标题字内填充日落云层，中部横向实拍条带，右侧手绘人物出框压住画面。</p>
+  </article>
+</section>
+
+<!-- ============ 04 史诗关键帧 ============ -->
+<section id="epic">
+  <div class="sec-head"><span class="num">04</span><h2>史诗关键帧</h2></div>
+  <p class="lead">焦土、巨龙、白衣骑手——四张按叙事顺序排列的关键帧：涉水、巨影压境、龙首俯瞰、烈焰近身。整组压在 2.39:1 遮幅里，只用一个色相推进压迫感。</p>
+
+  <article class="work">
+    <div class="work-head">
+      <h3>龙与骑手 <em>DRAGON RIDER</em></h3>
+      <div class="meta">关键帧 4 张 ／ 1456×816 ／ 2.39:1</div>
+    </div>
+    <div class="grid g4 epic">
+      <figure><img src="04_史诗关键帧_龙与骑手/龙与骑手_01_焦土涉水.jpg" alt="焦土涉水"><figcaption>01 焦土涉水 ／ 骑手入画，远处火线</figcaption></figure>
+      <figure><img src="04_史诗关键帧_龙与骑手/龙与骑手_02_巨影压境.jpg" alt="巨影压境"><figcaption>02 巨影压境 ／ 龙体从烟尘里显形</figcaption></figure>
+      <figure><img src="04_史诗关键帧_龙与骑手/龙与骑手_03_龙首俯瞰.jpg" alt="龙首俯瞰"><figcaption>03 龙首俯瞰 ／ 骑手被压在中轴线上</figcaption></figure>
+      <figure><img src="04_史诗关键帧_龙与骑手/龙与骑手_04_烈焰近身.jpg" alt="烈焰近身"><figcaption>04 烈焰近身 ／ 火海与鳞甲同框</figcaption></figure>
+    </div>
+  </article>
+</section>
+
+<!-- ============ 05 剧本文本 ============ -->
+<section id="script">
+  <div class="sec-head"><span class="num">05</span><h2>剧本文本</h2></div>
+  <p class="lead">《雨声》——八场、10 分 50 秒的剧情短片剧本。这里陈列的不是一个成品，而是一条修改路径：从初稿 V1.0 到定稿 V5，文本砍掉近六成，父亲的四句「主题陈述」被全部删除，换成了一双手的位置。下面按两件事展开：<em style="color:var(--accent);font-style:normal">改好了什么</em>（进步点）、<em style="color:var(--accent);font-style:normal">凭什么这么改</em>（思考点）。</p>
+
+  <article class="work">
+    <div class="work-head">
+      <h3>雨声 <em>RAIN</em></h3>
+      <div class="meta">剧情短片剧本 ／ 八场 ／ 10′50″ ／ V1.0 → V5</div>
+    </div>
+
+    <div class="rain-hero" style="margin-bottom:56px">
+      <blockquote>十九岁那年他没把作品集交出去；三十岁那年他还在改同一张画——直到他发现，自己要画的不是那张画，是十年前就该弯下去的那副肩膀。</blockquote>
+      <dl class="specs rain-specs">
+        <dt>体量</dt><dd>八场 · 10 分 50 秒 · 58 镜分镜</dd>
+        <dt>初稿</dt><dd>V1.0 · 三幕八场 · 1119 行 · 台词约 34 句</dd>
+        <dt>定稿</dt><dd>V5 · 环形八场 · 449 行 · 台词约 21 句</dd>
+        <dt>修改</dt><dd>五轮 · 逐场标死时间码 · 第五场另出前后对照</dd>
+        <dt>身份</dt><dd>编剧 ／ 分镜 ／ AI 视觉 —— 独立完成</dd>
+      </dl>
+    </div>
+
+    <h3 class="sub">一 · 五轮修改改了什么：初稿 vs 定稿</h3>
+    <table class="cmp">
+      <thead><tr><th>维度</th><th style="width:38%">初稿 V1.0</th><th>定稿 V5</th></tr></thead>
+      <tbody>
+        <tr><td>文本体量</td><td class="v1">1119 行（含人物小传、三幕标题）</td><td class="v5"><b>449 行</b>，删掉小传与幕标题，只留场次与动作</td></tr>
+        <tr><td>时长</td><td class="v1">10—12 分钟（估算）</td><td class="v5"><b>10 分 50 秒</b>，八场逐场标死时间码（00:00—10:50）</td></tr>
+        <tr><td>结构</td><td class="v1">三幕线性：裂缝 ／ 那些没有解决的问题 ／ 继续</td><td class="v5"><b>环形</b>：开场争执在第 1 场和第 5 场各演一次</td></tr>
+        <tr><td>场次</td><td class="v1">8 场，一条直线推进</td><td class="v5">8 场，<b>第 5 场是第 1 场的「前一半」</b></td></tr>
+        <tr><td>台词</td><td class="v1">约 34 句，父子正面论辩，把道理讲完</td><td class="v5">约 <b>21 句</b>，删掉全部论辩，只留功能句</td></tr>
+        <tr><td>父亲</td><td class="v1">会讲道理：解释、辩解、给儿子留选择（初稿有名：迈克尔）</td><td class="v5">几乎不说话：放便条、看时钟、手停半空、蹲下、捡画、抚平折角（全文只写「父亲」）</td></tr>
+        <tr><td>核心道具</td><td class="v1">抽象的「作品集」、手机教程</td><td class="v5">三格黑白短篇《夜归人》、雨棚、湿袖口、便条折角、旧作品夹</td></tr>
+        <tr><td>结尾</td><td class="v1">独白「我最喜欢下雨了」＋门框横移，回到青年卧室</td><td class="v5"><b>无独白</b>；成年公寓不动，只把坐着的人换掉</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="sub">二 · 五个进步点</h3>
+    <ol class="points">
+      <li>
+        <h4><span class="pn">01</span>从「说主题」到「演动作」——冲突从嘴移到手上</h4>
+        <p>初稿的父亲有四句把电影想说的话直接说完了，那是主题陈述，不是对话。V5 把这四句整段删除，改用三个手部动作替代。删掉的收益是冲突从「说理」变成「手的位置」，观众自己填空；父亲也从「一个会讲道理的人」变成「一个只能演身体的人」——这一改才真正可拍。</p>
+        <div class="ba">
+          <div class="before"><em>初稿 V1.0 ／ 父亲</em>「可你不交，怎么知道结果？」「画得不好，可以继续学。申请没成功，以后也还有别的办法。」「可你连结果都不愿意面对，我还能替你做什么？」「我不能永远替你留着退路。」</div>
+          <div class="after"><em>定稿 V5 ／ 三个动作</em>便条折了一下，捏在手里。／手伸到桌面以上，停住，收回来。／蹲下，手停在离纸几厘米的地方——「停住之后没有立刻收回」。</div>
+        </div>
+      </li>
+      <li>
+        <h4><span class="pn">02</span>把抽象目标换成一件能被特写看清的物</h4>
+        <p>初稿要拍的是「把作品集做好」——一个无法拍摄的判断。V5 造了一件具体的画：三格黑白短篇《夜归人》。整部片的动作线从此有了可见对象，第三格那道一直停着的线，成了结局要迈出去的那一步。同一处还立起了全片的姿态对照：旧稿里的人「肩背弯着，一只手攥住湿袖口」，新稿里的人「站得笔直，外套轮廓利落，像准备接受拍照」。</p>
+        <div class="ba">
+          <div class="before"><em>初稿 V1.0 ／ 目标</em>「我今天再改一遍」——观众看不到改的是哪里，也判断不出好坏，只能听人物自己说。</div>
+          <div class="after"><em>定稿 V5 ／ 道具</em>第一格 关门后的街道，夜归人走近店铺窄雨棚。／第二格 他停在雨棚下面。／第三格 只有构图线，人物还没画出来。</div>
+        </div>
+      </li>
+      <li>
+        <h4><span class="pn">03</span>把直线剪成一个回环：七句话演两遍</h4>
+        <p>初稿是一条直线。V5 动了一次结构手术：把第 1 场拆成两半——第 1 场只留争吵的最后四句，第 5 场从头再演一遍同一段争执，七句对白逐字相同。同样的七句，第一次在最前面（观众不知道前因），第二次在中段（观众已经知道前因）。这是全片结构上最大的一处改动，也是 V5 比初稿「更像电影」的地方。</p>
+        <div class="flow" style="margin-bottom:16px">
+          <div class="flow-row">
+            <span class="flow-tag">初稿 V1.0</span>
+            <span class="chip">1 争吵</span><span class="arw">→</span><span class="chip">2 现在</span><span class="arw">→</span><span class="chip">3 过去努力</span><span class="arw">→</span><span class="chip">4 看教程</span><span class="arw">→</span><span class="chip">5 截止当晚</span><span class="arw">→</span><span class="chip">6 第二天</span><span class="arw">→</span><span class="chip">7 仍画不好</span><span class="arw">→</span><span class="chip">8 结尾</span>
+          </div>
+          <div class="flow-row">
+            <span class="flow-tag" style="color:var(--accent)">定稿 V5</span>
+            <span class="chip loop">1 争吵（只留最后四句）</span><span class="arw">→</span><span class="chip">2</span><span class="arw">→</span><span class="chip">3</span><span class="arw">→</span><span class="chip">4</span><span class="arw">→</span><span class="chip loop">5 同一段争执·从头再演</span><span class="arw">→</span><span class="chip">6</span><span class="arw">→</span><span class="chip">7</span><span class="arw">→</span><span class="chip">8</span>
+          </div>
+        </div>
+        <div class="ba">
+          <div class="before"><em>初稿 V1.0 ／ 只演一次</em>吵架只发生一次，观众第一次听「截止了／我知道」，只能接收信息。</div>
+          <div class="after"><em>定稿 V5 ／ 演两次</em>「你没交？」「那几张还没好。」「哪几张？」「你看得出来吗？」「那你这些天到底在忙什么？」「你根本不知道这些画了多久！」「别碰！」——第 5 场的结尾与第 1 场的开头是同一段话。</div>
+        </div>
+      </li>
+      <li>
+        <h4><span class="pn">04</span>结尾：从「回到过去」改成「时间折叠」</h4>
+        <p>初稿的结尾靠一句独白「我最喜欢下雨了」，再让摄影机横移、门框遮住他；门框过去之后，坐在这里的是十九岁的丹尼尔，书桌上的物品也变回青年时期——等于时间倒流。V5 删掉独白，成年公寓的窗、画桌、桌边的杯子全部留在原处，只有人换了，桌边多了一本年轻时用过的练习册。初稿要求观众相信穿越，V5 只要求观众发现「换了个人」——更难拍，但一旦成立强得多。</p>
+        <div class="ba">
+          <div class="before"><em>初稿 V1.0 ／ 回到过去</em>独白 + 门框横移 + 场景整体回到青年卧室：时间倒流。</div>
+          <div class="after"><em>定稿 V5 ／ 时间折叠</em>同一张纸、同一只压纸的左手、同一个笔尖方向，只是坐着的人变了：同一个人在同一张纸上接着画。</div>
+        </div>
+      </li>
+      <li>
+        <h4><span class="pn">05</span>台词只做减法，每一句都得有活干</h4>
+        <p>V5 新增的父亲台词只有一处，还是语音：「周日过来？我买条鱼。」丹尼尔回：「买小的。上次吃了两天。」这一来一回把父子关系从「对立」拉回「日常」，也让结尾的沉默有东西垫底。除此之外全是删——删掉的都是解释情绪的话，留下的每一句都能被归到一个动作上：争取、掩饰、施压、逼、摊牌、拒绝、抵挡、破防。</p>
+        <div class="ba">
+          <div class="before"><em>初稿 V1.0 ／ 解释情绪</em>「我知道你画到多晚。可我不知道该等到什么时候。」「你不用等。」「那你给自己定个——」「我定了。」</div>
+          <div class="after"><em>定稿 V5 ／ 功能句</em>「那你打算怎么办。」「再改一遍。」「改到什么时候。」丹尼尔不答，把那张擦破的稿子往自己这边挪了半寸——动作替他回答。</div>
+        </div>
+      </li>
+    </ol>
+
+    <h3 class="sub">三 · 四个思考点：凭什么这么改</h3>
+    <p class="lead" style="margin:0 0 26px">这一组判断来自剧本对照与片段 01 的实际修改记录，四条的用法都可以直接迁移到下一部片子。</p>
+    <ol class="points">
+      <li>
+        <h4><span class="pn">①</span>先分层，再决定修哪里</h4>
+        <p>看第一遍片时先不给「哪里错」的清单，而是把片子劈成三层：<b>结构／空间／机位</b>、<b>人的具体</b>、<b>材质</b>。三层的修法完全不同——第一层要重拍，第二层是资产问题，第三层是后期问题。混在一起谈，就会得出「整段重做」这种最贵也最没必要的结论。<span style="color:var(--dim)">实例：房间的窗、暖气片、双门、桌、床与母版一致，判「对」，于是问题被缩小到人和材质两件事。</span></p>
+      </li>
+      <li>
+        <h4><span class="pn">②</span>改提示词之前，先问是不是缺资产</h4>
+        <p>手太老，第一反应是提示词没写清楚；回查发现写了「50 岁」「常年干活的手」。真正的问题是没给模型参照——青年手、成年手都做过，唯独没做过父亲的手，模型只能用默认值（偏衰老：青筋、老年斑、指节松）。这解释了为什么两只手是同一个错误：不是两个镜头各写错一次，是同一个资产缺口暴露了两次。<b>补一张锚点两小时，改提示词改十遍还是这样。</b></p>
+      </li>
+      <li>
+        <h4><span class="pn">③</span>能合成的不要生成，能删的不要说</h4>
+        <p>跨十年的那个 4 秒落点，否掉了「用 AI 生成成年公寓」这个更正统的方案：全部零件（桌面母版、画稿、成年手）都在，合成是确定性的；生成会带来新的不确定性——人漂、光不对、纸上的字会糊。同一条逻辑用在剧本上就是「能删的不要说」：初稿里解释情绪的句子，凡是一句话能被一个动作替代的，一律删。</p>
+      </li>
+      <li>
+        <h4><span class="pn">④</span>判断标准是「这一段观众新知道了什么」</h4>
+        <p>四场「他在画、画不成、再画」如果只重复失败，观众会先于人物疲惫。于是逐段过一遍信息增量表：凡属「他逃向自己会画的部分」的动作（揉后颈、把雨棚边缘描齐、把一处反光画更亮）只保留一处，其余压缩——<b>重复三次是啰嗦，重复一次才是性格</b>。这四场合计删 7 处动作，场长压掉约 40 秒，信息量不变。</p>
+      </li>
+    </ol>
+    <p class="note">还有一条只在这一部里出现、但值得写下来：<b>好看的镜头不一定是对的镜头</b>。成片里丹尼尔双手插兜站在窗边看雨，比原剧本的「垂手站立」好看得多，仍然要改——插兜是一个表演提示，它在说「我已经关上了」，而这个信息应该在第 2 场才给。判断标准是它在段落里的位置，不是单帧。</p>
+
+    <h3 class="sub">四 · 一处细看：第五场是怎么改的</h3>
+    <table class="cmp3">
+      <thead><tr><th>改动</th><th style="width:38%">修改前</th><th style="width:38%">修改后</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>便条</td>
+          <td class="v1">父亲将一张写着电话号码的便条放在桌边。<br>父亲：马克那边在找人。我说你周一可以过去谈谈。</td>
+          <td class="v5">父亲把便条放在桌边，两根手指压着没松。<br>父亲：马克那边缺人。周一过去，他先看看你。<br>丹尼尔：你跟他怎么说的？<br>父亲：说你在画。</td>
+        </tr>
+        <tr><td></td><td colspan="2" class="why">便条从「放下的道具」变成「父亲按着不松的筹码」。加一句问句，把冲突从「去不去打工」挪到「你在外面怎么说我」；父亲答「说你在画」，一句交代了他并不相信、但仍替儿子挡了一下——他不是反派，他是没辙。</td></tr>
+        <tr>
+          <td>椅子</td>
+          <td class="v1">父亲拉开另一把椅子，想坐下。椅子上放满了画。他拿起最上面一沓，又不知道放在哪里。丹尼尔站起身，接过来，放回椅子。</td>
+          <td class="v5">（保留原动作）丹尼尔站起来，接过去，放回椅子。<br>他手里空了。桌上那张擦破的稿子露出来。<br>父亲伸手。丹尼尔先一步按住。</td>
+        </tr>
+        <tr><td></td><td colspan="2" class="why">椅子原来是生活细节，改后成了扳机：儿子一接手，手就空了，那张不能看的纸就露出来——冲突不再需要台词推动，由动作自己升级。</td></tr>
+        <tr>
+          <td>截止</td>
+          <td class="v1">父亲：截止了。<br>丹尼尔：我知道。</td>
+          <td class="v5">父亲：梅西今晚十二点截止。<br>丹尼尔：我知道。<br>父亲：明年再等一年。<br>丹尼尔：我知道。</td>
+        </tr>
+        <tr><td></td><td colspan="2" class="why">原文只说「截止了」，观众不知道交给谁、错过意味着什么。改后「梅西」「十二点」「明年再等一年」把代价说清；两遍「我知道」是同一句抵挡，第二次更硬。</td></tr>
+      </tbody>
+    </table>
+    <p class="note">同一个方法也用在剧本的收束上：记号从初稿的三步便条（「检查比例。」「保留最初的表达。」「下一次从这里继续。」）收成两个字——<b>「肩、手。」</b>信息量减少，但更接近真实工作状态。</p>
+
+    <h3 class="sub">五 · 代价与待办</h3>
+    <div class="cost">
+      <div>
+        <h4>删掉的东西是有代价的</h4>
+        <ul>
+          <li><b>父亲动机变薄</b>：四句论辩删掉后，「他为什么着急」只剩「马克那边在找人」一句，且不在正文里明确。</li>
+          <li><b>家庭背景全删</b>：初稿的「镇上」「印刷店」这种生活半径没了，只剩一间房、一扇窗、一张桌。</li>
+          <li><b>讽刺力度下降</b>：初稿「教程→无关内容→笑出声」的整条堕落线，V5 压成「他被逗笑」一句，观众可能读不出这是逃避。</li>
+          <li><b>前半段变慢</b>：第 1 场 45 秒几乎没有对白，对短视频平台的完播率不友好。</li>
+        </ul>
+      </div>
+      <div>
+        <h4>还没做完的</h4>
+        <ul>
+          <li><b>时代与地点</b>：剧本抬头仍写「当代欧洲」，制作已定惠灵顿 2015 冬／2026 冬，需改抬头，否则美术、道具、证件会继续按「欧洲」走。</li>
+          <li><b>人物名</b>：初稿父亲叫「迈克尔」，V5 全文只写「父亲」；建议标题页保留姓名一次（选角、字幕、合同），正文统一用「父亲」。</li>
+          <li><b>可读的便条</b>：建议补一个 2 秒插入镜——便条上写着电话号码和「马克」，把父亲的动机补回来，成本极低。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="files" style="margin-top:34px">
+      <a href="05_剧本文本_雨声/01_剧本_初稿V1.0.txt">初稿 V1.0</a>
+      <a href="05_剧本文本_雨声/02_剧本_定稿V5.txt">定稿 V5</a>
+      <a href="05_剧本文本_雨声/03_初稿V1_对_定稿V5_差异表.txt">初稿对定稿 · 差异表</a>
+      <a href="05_剧本文本_雨声/04_导演分镜_58镜.txt">导演分镜 · 58 镜</a>
+      <a href="05_剧本文本_雨声/05_修改中的思考.txt">修改中的思考</a>
+      <a href="05_剧本文本_雨声/06_第五场修改前后对照.pdf">第五场 · 修改前后对照（PDF）</a>
+      <a href="05_剧本文本_雨声/07_附件_修改中的思考与短视频版.pdf">附件 · 思考与短视频节奏版（PDF）</a>
+    </div>
+  </article>
+</section>
+
+<!-- ============ 06 技术档案 ============ -->
+<section id="archive">
+  <div class="sec-head"><span class="num">06</span><h2>技术档案与目录</h2></div>
+  <p class="lead">《第三棵梧桐》的整个生产链被完整记录下来：从模型参数到每一个踩过的坑。这是这一批作品里最值得留下的部分。</p>
+
+  <div class="steps">
+    <div><b>① 定锚</b><p>先出人物三视图（正／侧／背同一张脸）与空景板（阳面／阴面同机位只换光），再往空景里放人。</p></div>
+    <div><b>② 逐镜生成</b><p>MiniMax H3 ref2va，1024×576，8 步 turbo LoRA；上一镜尾帧当下一镜首帧，做接力。</p></div>
+    <div><b>③ 超分</b><p>Real-ESRGAN animevideov3 2× 到 2560×1440 再回缩 1080p，unsharp 0.35 收敛塑料感。</p></div>
+    <div><b>④ 重剪</b><p>100 BPM、一拍 14.4 帧，53 个切点全部吸附拍点网格，最大误差 1 帧。</p></div>
+    <div><b>⑤ 调色交付</b><p>Resolve Fusion FileLUT 两条暖调分支；−12.9 LUFS / −1.5 dBTP，H.264 CRF16 faststart。</p></div>
+  </div>
+  <p class="note">量化记录：成片 2016 帧 / 84.000 s；单镜渲染 100–390 s；40+ 次重渲；音频 100.00 BPM；调色 岩井俊二 4 版 + 春光乍泄 2 版。完整问题清单见作品目录中的两份 docx。</p>
+
+  <h3 style="font-family:var(--serif);font-weight:400;font-size:20px;margin:56px 0 14px;letter-spacing:.04em">目录结构</h3>
+<div class="tree">作品集_2026/
+├── index.html                     ← 你正在看的这一页
+├── README.md                      ← 分类说明与清单
+│
+├── 01_动态影像/
+│   ├── 01_第三棵梧桐_84秒/         ← AI 剧情短片（成片 + 剧照 8 张 + 2 份技术文档）
+│   ├── 02_海洋与鲸豚_41秒/         ← 海洋生物影像（成片 + 剧照 4 张）
+│   └── 03_雪夜街头_17秒/           ← 雪夜场景片段（片段 + 剧照 4 张）
+│
+├── 02_电影感人像/
+│   ├── 01_海边铁路/                ← 静帧 3 张
+│   └── 02_乡野巨云/                ← 静帧 3 张
+│
+├── 03_海报设计_AmorFati/           ← 海报 4 版
+│
+├── 04_史诗关键帧_龙与骑手/         ← 关键帧 4 张
+│
+└── 05_剧本文本_雨声/               ← 剧本 2 版 + 差异表 + 分镜 + 思考 + 2 份 PDF</div>
+</section>
+
+</main>
+
+<footer>
+  <span>作品集 · 2026 · 3 支影像 ／ 14 件平面 ／ 1 部剧本（V1 → V5）</span>
+  <span>整理于 2026-10-27 · 原件分别在 D:\作品 与 D:\雨声_V5</span>
+</footer>
+
+<div id="lb"><img alt=""><div class="cap"></div></div>
+<script>
+  const lb = document.getElementById('lb'), lbi = lb.querySelector('img'), cap = lb.querySelector('.cap');
+  document.querySelectorAll('figure').forEach(f => {
+    f.addEventListener('click', () => {
+      const img = f.querySelector('img');
+      lbi.src = img.src; lbi.alt = img.alt;
+      cap.textContent = (f.querySelector('figcaption')?.textContent || '') + '   ' + img.naturalWidth + '×' + img.naturalHeight;
+      lb.classList.add('on');
+    });
+  });
+  lb.addEventListener('click', () => lb.classList.remove('on'));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') lb.classList.remove('on'); });
+</script>
+</body>
+</html>
