@@ -108,7 +108,14 @@
     border:1px solid var(--line);padding:22px 24px;overflow-x:auto;line-height:1.85;white-space:pre}
 
   footer{padding:7vh 8vw 9vh;border-top:1px solid var(--line);color:var(--dim);font-size:12px;
-    display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;letter-spacing:.08em}
+    display:flex;flex-direction:column;gap:16px;letter-spacing:.08em}
+  footer .foot-main{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  footer .foot-url{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;
+    padding-top:16px;border-top:1px solid var(--line)}
+  footer .foot-url .fl{font-size:10.5px;letter-spacing:.26em;color:var(--dim)}
+  footer .foot-url a{color:var(--accent);text-decoration:none;letter-spacing:.04em;
+    border-bottom:1px solid rgba(212,160,86,.35);padding-bottom:2px}
+  footer .foot-url a:hover{border-bottom-color:var(--accent)}
 
   /* ---------- script / 雨声 ---------- */
   .rain-hero{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:38px;align-items:start}
@@ -606,8 +613,14 @@
 </main>
 
 <footer>
-  <span>作品集 · 2026 · 3 支影像 ／ 14 件平面 ／ 1 部剧本（V1 → V5）</span>
-  <span>整理于 2026-10-27 · 原件分别在 D:\作品 与 D:\雨声_V5</span>
+  <div class="foot-main">
+    <span>作品集 · 2026 · 3 支影像 ／ 14 件平面 ／ 1 部剧本（V1 → V5）</span>
+    <span>整理于 2026-10-27 · 原件分别在 D:\作品 与 D:\雨声_V5</span>
+  </div>
+  <div class="foot-url">
+    <span class="fl">线上地址</span>
+    <a href="https://elizabethsteingwk880-eng.github.io/portfolio-2026/">elizabethsteingwk880-eng.github.io/portfolio-2026</a>
+  </div>
 </footer>
 
 <div id="lb"><img alt=""><div class="cap"></div></div>
